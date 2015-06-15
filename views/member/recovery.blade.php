@@ -1,17 +1,17 @@
 @if(Session::has('error'))
-	<div class="error" id='message' style='display:none'>							
-		{{Session::get('error')}}
-	</div>
+<div class="error" id='message' style='display:none'>
+	{{Session::get('error')}}
+</div>
 @endif
 @if(Session::has('success'))
-	<div class="success" id='message' style='display:none'>
-		<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>					
-	</div>
+<div class="success" id='message' style='display:none'>
+	<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>
+</div>
 @endif
 @if(Session::has('errorrecovery'))
-	<div class="error" id='message' style='display:none'>
-		<p>Maaf, email anda tidak ditemukan.</p>					
-	</div>
+<div class="error" id='message' style='display:none'>
+	<p>Maaf, email anda tidak ditemukan.</p>
+</div>
 @endif	
 	
 <div class="row">
@@ -23,16 +23,16 @@
 				{{Form::open(array('url' => 'member/forgetpassword', 'class' => 'signin-form'))}}
 					<input class="input-block-level" name="email" type="text" placeholder="Enter your email address" id="inputEmail" />
 					<button class="btn btn-medium btn-general input-block-level" type="submit">Reset Password</button>
-				</form>
+				{{Form::close()}}
 				<label for="inputPassword">
-					<a href="{{URL::to('member')}}">Login Here</a>
+					<a href="{{url('member')}}">Login Here</a>
 				</label>
 			</div>
 			<div class="span7">
 				<h2 class="widget-title"><span>New User?</span></h2>
 				<div class="sidebar-line"><span></span></div>
 				<p>Speed up your transaction by register your own account!!!</p>
-				<a class="btn btn-general" href="{{URL::to('member/create')}}">Register new account</a>
+				<a class="btn btn-general" href="{{url('member/create')}}">Register new account</a>
 			</div>
 		</div>
 	</div>
@@ -42,10 +42,10 @@
 			<h2 class="widget-title"><span>User Pages</span></h2>
 			<div class="sidebar-line"><span></span></div>
 			<ul class="nav nav-list bs-docs-sidenav">
-				<li class="active"><a href="{{URL::to('member')}}">Login Page</a></li>
-				<li><a href="{{URL::to('member/create')}}">Register Page</a></li>
-				<li><a href="{{URL::to('member')}}">My Account</a></li>
-				<li><a href="{{URL::to('checkout')}}">Checkout</a></li>
+				<li class="active"><a href="{{url('member')}}">Login Page</a></li>
+				<li><a href="{{url('member/create')}}">Register Page</a></li>
+				<li><a href="{{url('member')}}">My Account</a></li>
+				<li><a href="{{url('checkout')}}">Checkout</a></li>
 			</ul>
 		</div>
 	</div>

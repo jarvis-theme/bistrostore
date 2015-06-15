@@ -1848,7 +1848,7 @@ select,
   margin-left: 0;
 }
 .sidebar ul ul {
-  margin-left: 20px;
+  /*margin-left: 20px;*/
 }
 .sidebar section {
   margin-bottom: 48px;
@@ -2372,3 +2372,18 @@ ul.reviews-posts .rating {float:left;}
 .navbar .nav > li .dropdown-submenu:focus > a:after {
   border-left-color: #cc3616 !important;
 }
+/*.fb_reset {display: inline-block;}*/
+/*.fb-share-button {margin: 0px 15px;}*/
+.fb_iframe_widget{
+	top: -4px !important;
+}
+
+.twitter-share-button{
+  float: left;
+}
+.fb_reset {display: inline-block !important;}
+.fb-share-button {
+  /*margin-left: 15px !important;*/
+  width: 55px !important;
+}
+.list-bank {display:inline-block; width:160px;}

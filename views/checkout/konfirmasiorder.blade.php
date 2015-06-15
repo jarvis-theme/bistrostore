@@ -13,13 +13,13 @@
 				<table class="table wishlist table-hover table-bordered">
 					<thead>
 						<tr>
-							<th align="center"  >Kode Order</th>
-							<th align="center" >Tanggal Order</th>
-							<th align="center" class="hidden-phone" >Order</th>
-							<th align="center" class="hidden-phone">Jumlah</th>
-							<th align="center" >Jumlah yg belum di bayar</th>
-							<th align="center" >No Resi</th>
-							<th align="center" >Status</th>
+							<th align="center">Kode Order</th>
+							<th align="center">Tanggal Order</th>
+							<th align="center"class="hidden-phone">Order</th>
+							<th align="center"class="hidden-phone">Jumlah</th>
+							<th align="center">Jumlah yg belum di bayar</th>
+							<th align="center">No Resi</th>
+							<th align="center">Status</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -34,10 +34,10 @@
 								</ul>
 							</td>
 							<td class="hidden-phone">
-								{{jadiRupiah($order->total)}}
+								{{price($order->total)}}
 							</td>
 							<td>
-								- {{($order->status==2 || $order->status==3) ? jadiRupiah(0) : jadiRupiah($order->total)}}
+								- {{($order->status==2 || $order->status==3) ? price(0) : price($order->total)}}
 							</td>
 							<td>
 								{{$order->noResi}}
@@ -50,9 +50,9 @@
 								@elseif($order->status==2)
 								<span class="label label-info">Pembayaran diterima</span>
 								@elseif($order->status==3)
-								<span class="label label-info">Terkirim</span>
+								<span class="label label-success">Terkirim</span>
 								@elseif($order->status==4)
-								<span class="label label-info">Batal</span>
+								<span class="label label-default">Batal</span>
 								@endif
 							</td>
 						</tr>

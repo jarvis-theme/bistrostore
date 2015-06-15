@@ -1,4 +1,4 @@
-<a href="#"><i class="icon-shopping-cart"></i> Your Cart <span class="label label-success font14">{{Shpcart::cart()->total_items()}} item(s)</span> - {{jadiRupiah(Shpcart::cart()->total())}} <i class="icon-arrow-down"></i></a>
+<a href="#"><i class="icon-shopping-cart"></i> Your Cart <span class="label label-success font14">{{Shpcart::cart()->total_items()}} item(s)</span> - {{price(Shpcart::cart()->total())}} <i class="icon-arrow-down"></i></a>
 <ul class="dropdown-menu topcart">
 	<li>
 		<table>
@@ -9,7 +9,7 @@
 					<td class="image"><a href="#">{{HTML::image(getPrefixDomain().'/produk/thumb/'.$cart['image'], $cart['name'], array('width'=>'50px'));}}</a></td>
 					<td class="name"><a href="#">{{$cart['name']}}</a></td>
 					<td class="quantity">x {{$cart['qty']}}</td>
-					<td class="total">{{ jadiRupiah($cart['qty'] * $cart['price'])}}</td>
+					<td class="total">{{ price($cart['qty'] * $cart['price'])}}</td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -18,12 +18,12 @@
 			<tbody>
 				<tr>
 					<td class="textright"><b>Total:</b></td>
-					<td class="textright">{{jadiRupiah(Shpcart::cart()->total())}}</td>
+					<td class="textright">{{price(Shpcart::cart()->total())}}</td>
 				</tr>
 			</tbody>
 		</table>
 		<div class="well pull-right">
-			<a href="checkout.html" class="btn btn-general">Checkout</a>
+			<a href="{{url('checkout')}}" class="btn btn-general">Checkout</a>
 		</div>
 		@else
 		<table>

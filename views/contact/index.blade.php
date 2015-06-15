@@ -1,21 +1,21 @@
 @if(Session::has('msg2'))
-
 <div class="success" id='message' style='display:none'>
-
-<p>Terima kasih, pesan anda sudah terkirim.</p>
-
+	<p>Terima kasih, pesan anda sudah terkirim.</p>
 </div>
-
 @endif
-
 @if(Session::has('msg3'))
-
 <div class="success" id='message' style='display:none'>
-
-<p>404</p>
-
+	Maaf, pesan anda belum terkirim.
 </div>
-
+@endif
+@if($errors->all())
+<div class="error" id='message' style='display:none'>
+	Terjadi kesalahan dalam menyimpan data.<br><br>
+	@foreach($errors->all() as $message)
+	-{{ $message }}<br>
+	@endforeach
+	</ul>
+</div>
 @endif
 
 <!-- ============ -->
@@ -34,12 +34,23 @@
 		<div class="row-fluid">
 			<div class="span6">
 				<p>{{$kontak->alamat}}</p>
-				<p><strong>Telepon</strong>: {{$kontak->telepon}}</p>
+				<p>
+					<strong>Telepon</strong>: 
+					@if(empty($kontak->telepon) && empty($kontak->hp))
+					-
+					@elseif(!empty($kontak->telepon) && empty($kontak->hp))
+					{{$kontak->telepon}}
+					@elseif(empty($kontak->telepon) && !empty($kontak->hp))
+					{{$kontak->hp}}
+					@else
+					{{$kontak->telepon.' - '.$kontak->hp}}
+					@endif
+				</p>
 				<p><strong>E-mail</strong>: {{$kontak->email}}</p>
 			</div>
 			<div class="span6">
 				<h2>Send us message</h2>
-				<form class="signin-form" action="{{URL::to('kontak')}}" method="post">
+				<form class="signin-form" action="{{url('kontak')}}" method="post">
 					<input class="input-block-level" name="namaKontak" type="text" placeholder="Name"/>
 					<input class="input-block-level" name="emailKontak" placeholder="Email" type="text"/>
 					<textarea name="messageKontak" placeholder="Your message here"></textarea>

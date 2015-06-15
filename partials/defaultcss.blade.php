@@ -1,10 +1,10 @@
 	<!-- Default css-->
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,700,700italic,800" rel="stylesheet" type="text/css">  
-	{{HTML::style(dirTemaToko().'bistrostore/assets/css/bootstrap.css')}}
-	{{HTML::style(dirTemaToko().'bistrostore/assets/css/media.css')}}
-	{{HTML::style(dirTemaToko().'bistrostore/assets/css/flexslider.css')}}
-	{{HTML::style(dirTemaToko().'bistrostore/assets/css/style.css')}}
-	{{HTML::style(dirTemaToko().'bistrostore/assets/css/layerslider.css')}}
+	{{generate_theme_css('bistrostore/assets/css/bootstrap.css')}}
+	{{generate_theme_css('bistrostore/assets/css/media.css')}}
+	{{generate_theme_css('bistrostore/assets/css/flexslider.css')}}
+	{{generate_theme_css('bistrostore/assets/css/style.css')}}
+	{{generate_theme_css('bistrostore/assets/css/layerslider.css')}}
 
 	<!-- Other -->
 	<script type="text/javascript">
@@ -26,4 +26,4 @@
 		.wf-active .logo {font-family: 'Bangers', serif;}
 	</style>
 
-	{{createFavicon($toko)}}
+	{{favicon()}}

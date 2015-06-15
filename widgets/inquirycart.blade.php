@@ -15,7 +15,7 @@
 			</tbody>
 		</table>
 		<div class="well pull-right">
-			<a href="checkout.html" class="btn btn-general">Checkout</a>
+			<a href="{{url('checkout')}}" class="btn btn-general">Checkout</a>
 		</div>
 		@else
 		<table>

@@ -37,7 +37,7 @@
 										@endforeach
 										</ul>
 									</td>
-									<td>{{ jadiRupiah($item->total)}}</td>
+									<td>{{ price($item->total)}}</td>
 									<td>{{ $item->noResi}}</td>
 									<td>
 										@if($item->status==0)
@@ -47,13 +47,13 @@
 										@elseif($item->status==2)
 										<span class="label label-info">Pembayaran diterima</span>
 										@elseif($item->status==3)
-										<span class="label label-info">Terkirim</span>
+										<span class="label label-success">Terkirim</span>
 										@elseif($item->status==4)
-										<span class="label label-info">Batal</span>
+										<span class="label label-default">Batal</span>
 										@endif
 									</td>
 									<td>
-										<a href="{{URL::to('konfirmasiorder/'.$item->id)}}" class="btn btn-primary">Konfirmasi Pembayaran</a>
+										<a href="{{url('konfirmasiorder/'.$item->id)}}" class="btn btn-primary">Konfirmasi Pembayaran</a>
 									</td>
 								</tr>
 								@endforeach
