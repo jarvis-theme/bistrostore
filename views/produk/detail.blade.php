@@ -1,39 +1,39 @@
 <div class="row">
 	<div class="span9 post">
-		<h2 class="page-header"><span>{{$produk->nama}}</span></h2>
+		<h2 class="page-header"><span>{{ $produk->nama }}</span></h2>
 		<div class="sidebar-line"><span></span></div>
 		<div class="row-fluid product-info">
 			<div class="span7">
 				<div class="cf">
 					<span class="productwrap">
-						{{HTML::image(product_image_url($produk->gambar1,'medium'),'',array('id'=>'demo4'))}}
+						{{HTML::image(product_image_url($produk->gambar1,'large'), $produk->nama, array('id'=>'demo4'))}}
 					</span>
 					<ul id="demo4carousel" class="elastislide-list"> 
 						@if($produk->gambar1!='')
 						<li>
 							<a href="#">
-								{{HTML::image(product_image_url($produk->gambar1),'gambar1',array('data-largeimg'=>product_image_url($produk->gambar1,'medium')))}}
+								{{HTML::image(product_image_url($produk->gambar1,'thumb'),'thumbnail 1',array('data-largeimg'=>product_image_url($produk->gambar1,'medium')))}}
 							</a>
 						</li>
 						@endif 
 						@if($produk->gambar2!='')
 						<li>
 							<a href="#">
-								{{HTML::image(product_image_url($produk->gambar2),'gambar2',array('data-largeimg'=>product_image_url($produk->gambar2,'medium')))}}
+								{{HTML::image(product_image_url($produk->gambar2,'thumb'),'thumbnail 2',array('data-largeimg'=>product_image_url($produk->gambar2,'medium')))}}
 							</a>
 						</li>
 						@endif 
 						@if($produk->gambar3!='')
 						<li>
 							<a href="#">
-								{{HTML::image(product_image_url($produk->gambar3),'gambar3',array('data-largeimg'=>product_image_url($produk->gambar3,'medium')))}}
+								{{HTML::image(product_image_url($produk->gambar3,'thumb'),'thumbnail 3',array('data-largeimg'=>product_image_url($produk->gambar3,'medium')))}}
 							</a>
 						</li>
 						@endif 
 						@if($produk->gambar4!='')
 						<li>
 							<a href="#">
-								{{HTML::image(product_image_url($produk->gambar4),'gambar4',array('data-largeimg'=>product_image_url($produk->gambar4,'medium')))}}
+								{{HTML::image(product_image_url($produk->gambar4,'thumb'),'thumbnail 4',array('data-largeimg'=>product_image_url($produk->gambar4,'medium')))}}
 							</a>
 						</li>
 						@endif
@@ -41,13 +41,13 @@
 				</div>
 			</div>
 			<div class="span5">
-				<form action="#" id='addorder'>
+				<form action="#" id="addorder">
 					<!--<h2 class="post-title">ini kolom nama</h2>-->
 					@if($setting->checkoutType!=2)
 						<div class="price"> 
-						@if($produk->hargaCoret!=0)
+							@if($produk->hargaCoret!=0)
 							<span class="price-old">{{ price($produk->hargaCoret) }}</span>
-						@endif 
+							@endif 
 							<span class="price-new">{{ price($produk->hargaJual) }}</span>
 						</div>
 					@endif  
@@ -83,8 +83,8 @@
 						</div>
 						<div class="row-fluid">
 							<hr>
-							<div class="span6">
-                                {{sosialShare(product_url($produk))}}
+							<div class="span12">
+								{{ sosialShare(product_url($produk)) }}
 							</div>
 						</div>
 					@elseif($setting->checkoutType==3) 
@@ -147,7 +147,7 @@
 				<div id="myTabContent" class="tab-content">
 					<div class="tab-pane fade in active" id="information"> {{$produk->deskripsi}} </div>
 					<div class="tab-pane fade" id="reviews">
-						{{pluginTrustklik()}}
+						{{ pluginTrustklik() }}
 					</div>
 					<div class="tab-pane fade" id="comment">
 						<div class="row-fluid">
@@ -168,20 +168,20 @@
 					<div class="for-womans flexslider flex-direction-nav-on-top">
 						<ul class="slides">
 							<li>
-            				{{-- */ $count = 0 /* --}}
+							{{-- */ $count = 0 /* --}}
 							@foreach(other_product($produk) as $myproduk)
-                				{{-- */ $count++ /* --}}
+								{{-- */ $count++ /* --}}
 								@if($count==4) 
 									</li>
 									<li>
-                					{{-- */ $count = 1 /* --}}
+									{{-- */ $count = 1 /* --}}
 								@endif
 								<div class="span4">
 									<div class="wdt-product">
 										<div class="wdt-products-wrapper">
 											<div class="wdt-product active show">
 												<a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">
-													{{HTML::image(product_image_url($myproduk->gambar1), $myproduk->nama, array('alt' => ($myproduk->nama), 'title' => ($myproduk->nama), 'style'=>'min-height:273px'))}}
+													{{HTML::image(product_image_url($myproduk->gambar1,'medium'), $myproduk->nama, array('alt' => ($myproduk->nama), 'title' => ($myproduk->nama), 'style'=>'min-height:273px'))}}
 												</a>
 												<h4>
 													<a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">
@@ -189,7 +189,7 @@
 													</a>
 												</h4>
 												<div class="wdt-pricing">
-													<span class="amount">{{price($myproduk->hargaJual)}}</span>
+													<span class="amount">{{ price($myproduk->hargaJual) }}</span>
 												</div>
 												<div class="wdt-cart">
 													<div class="wdt-cart-bar">
@@ -222,37 +222,40 @@
 				<h2 class="widget-title"><span>Site Categories</span></h2>
 				<div class="sidebar-line"><span></span></div>
 				<ul class="bullet_arrow2 categories">
-                @foreach(list_category() as $side_menu)
-                    @if($side_menu->parent == '0') 
-                    <li>
-                        <a href="{{category_url($side_menu)}}">{{$side_menu->nama}}</a>
-                        @if($side_menu->anak->count() != 0)
-                        <ul>
-                            @foreach($side_menu->anak as $submenu)
-                                @if($side_menu->id == $submenu->parent)
-                                <li>
-                                    <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
-                                    @if($submenu->anak->count() != 0)
-                                        <ul>
-                                        @foreach($submenu->anak as $submenu2)
-                                            @if($submenu2->parent == $submenu->id)
-                                            <li>
-                                                <a href="{{category_url($submenu)}}">{{$submenu2->nama}}</a>
-                                            </li>
-                                            @endif
-                                        @endforeach        
-                                        </ul>
-                                    @endif
-                                </li>
-                                @endif 
-                            @endforeach 
-                        </ul>
-                        @endif
-                    </li>
-                    @endif 
-                @endforeach 
+				@foreach(list_category() as $side_menu)
+					@if($side_menu->parent == '0') 
+					<li>
+						<a href="{{category_url($side_menu)}}">{{$side_menu->nama}}</a>
+						@if($side_menu->anak->count() != 0)
+						<ul>
+							@foreach($side_menu->anak as $submenu)
+								@if($side_menu->id == $submenu->parent)
+								<li>
+									<a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+									@if($submenu->anak->count() != 0)
+										<ul>
+										@foreach($submenu->anak as $submenu2)
+											@if($submenu2->parent == $submenu->id)
+											<li>
+												<a href="{{category_url($submenu)}}">{{$submenu2->nama}}</a>
+											</li>
+											@endif
+										@endforeach        
+										</ul>
+									@endif
+								</li>
+								@endif 
+							@endforeach 
+						</ul>
+						@endif
+					</li>
+					@endif 
+				@endforeach 
 				</ul>
-            @endif
+			@endif
+			</div>
+			<div class="widget powerup">
+				{{pluginSidePowerup()}}
 			</div>
 			<div class="widget">
 				@foreach(vertical_banner() as $item)

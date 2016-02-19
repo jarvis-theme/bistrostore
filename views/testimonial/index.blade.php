@@ -1,14 +1,3 @@
-@if(Session::has('msg1'))
-<div class="success" id='message' style='display:none'>
-	<p>Terima kasih, Testimonial anda sudah terkirim.</p>
-</div>
-@endif
-@if(Session::has('msg2'))
-<div class="success" id='message' style='display:none'>
-	<p>404</p>
-</div>
-@endif
-
 <!-- ================= -->
 <!-- Testimonial index -->
 <!-- ================= -->
@@ -19,7 +8,7 @@
 
 		@foreach(list_testimonial() as $key=>$value)
 		<h2>{{$value->nama}}</h2>
-		<cite title>{{date("d M Y", strtotime($value->updated_at))}}</cite> ~
+		<cite>{{date("d M Y", strtotime($value->created_at))}}</cite> ~
 		{{$value->isi}}
 		@endforeach
 	</div>

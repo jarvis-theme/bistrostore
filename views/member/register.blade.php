@@ -1,20 +1,3 @@
-@if($errors->all())
-<div class="alert alert-error">
-	Kami menemukan error berikut:
-	<ul>
-		@foreach($errors->all() as $message)
-		<li>{{ $message }}</li>
-		@endforeach
-	</ul>
-</div>
-@endif
-@if(Session::has('error'))
-<div class="alert alert-error">
-	<h3>Kami menemukan error berikut:</h3>
-	<p>{{Session::get('error')}}</p>
-</div>
-@endif
-
 <!-- Register Page -->
 <div class="row">
 	<div class="span9 post">
@@ -36,15 +19,15 @@
 				<div class="sidebar-line"><span></span></div>
 				{{Form::open(array('url'=>'member','method'=>'post','class'=>'register-form'))}}
 					<label for="inputEmail"><span class="required">*</span> Your Personal Details</label>
-					<input class="input-block-level" type="text" placeholder="* Name" id="inputname" name="nama" value="{{Input::old('nama')}}" required/>
-					<input class="input-block-level" placeholder="* Enter your email address" type="text" id="inputemail" name='email' value='{{Input::old("email")}}' required/>
-					<input class="input-block-level" placeholder="Enter your phone number" type="text" id="inputphone" name='telp' value='{{Input::old("telp")}}' required/>
+					<input class="input-block-level" type="text" placeholder="* Name" id="inputname" name="nama" value="{{Input::old('nama')}}" required />
+					<input class="input-block-level" placeholder="* Enter your email address" type="text" id="inputemail" name="email" value="{{Input::old('email')}}" required/>
+					<input class="input-block-level" placeholder="Enter your phone number" type="text" id="inputphone" name="telp" value="{{Input::old('telp')}}" required/>
 					<label for="inputEmail"><span class="required">*</span> Address Details</label>
-					<input class="input-block-level" type="text" placeholder="* Enter your address" id="inputaddress" name='alamat' value="{{Input::old("alamat")}}" required/>
-					<input class="input-block-level" placeholder=" Enter your post code" type="text" id="inputcode" name='kodepos' value='{{Input::old("kodepos")}}'/>
+					<input class="input-block-level" type="text" placeholder="* Enter your address" id="inputaddress" name="alamat" value="{{Input::old('alamat')}}" required/>
+					<input class="input-block-level" placeholder=" Enter your post code" type="text" id="inputcode" name="kodepos" value="{{Input::old('kodepos')}}"/>
 					<label for="inputEmail"><span class="required">*</span> Country / Region / State</label>
 					<div style="margin-bottom: -25px;">
-						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara, Input::old("negara"), array('required', "class"=>"span5", "name"=>"negara", "id"=>"negara", "data-rel"=>"chosen" "onchange"=>"searchProvinsi(this.value)"))}}
+						{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara, Input::old("negara"), array('required', "class"=>"span5", "name"=>"negara", "id"=>"negara", "data-rel"=>"chosen", "onchange"=>"searchProvinsi(this.value)"))}}
 					</div>
 					<br>
 					<div style="margin-bottom: -25px;">
@@ -52,17 +35,17 @@
 					</div>
 					<br>
 					<div>
-						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required', "class"=>"span5", "name"=>"kota", "id"="kota", "data-rel"=>"chosen"))}}
+						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"), array('required', "class"=>"span5", "name"=>"kota", "id"=>"kota", "data-rel"=>"chosen"))}}
 					</div>
 
 					<label for="inputEmail"><span class="required">*</span> Choose Password</label>
-					<input class="input-block-level" placeholder="* Enter your password" type="text" id="inputpassword" name="password" required/>
+					<input class="input-block-level" placeholder="* Enter your password" type="text" id="inputpassword" name="password" required />
 					<input class="input-block-level" placeholder="* Enter your password again" type="text" id="inputpassword" name="password_confirmation" required/>
 					<label class="checkbox inline">
-						<input type="checkbox" id="inlineCheckbox1" value="option1" required> Saya telah membaca dan menyetujui&nbsp;<a href="{{url('service')}}">Persyaratan Member</a>
+						<input type="checkbox" id="inlineCheckbox1" value="option1" required > Saya telah membaca dan menyetujui&nbsp;<a href="{{url('service')}}">Persyaratan Member</a>
 					</label>
 					<button class="btn btn-medium btn-general input-block-level" type="submit">Register your account today!</button>
-				</form>
+				{{Form::close()}}
 			</div>
 		</div>
 	</div>

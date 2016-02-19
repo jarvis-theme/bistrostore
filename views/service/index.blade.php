@@ -5,7 +5,7 @@
 	<div class="span12 post">
 		<div class="row-fluid">
 			<div class="span12">
-				<h2 class="page-header">Service</h2>
+				<!-- <h2 class="page-header">Service</h2> -->
 				<div class="sidebar-line"><span></span></div>
 				<div class="accordion" id="checkout">
 					<div class="accordion-group">

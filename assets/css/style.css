@@ -193,7 +193,7 @@ a.read-more:hover, a.more-link:hover{
 #wdt-links a:focus,
 #wdt-links a:hover {
 	text-decoration:none;
-	color:#ffffff !important;
+	color: inherit;
 }
 
 .navbar {
@@ -440,11 +440,15 @@ ul.footer-social {
 ul.footer-social li {
     float: left;
     list-style: none outside none;
-    line-height: 55px;
-    font-size: 2.6em;
+    /*line-height: 55px;*/
+    /*font-size: 2.6em;*/
 	text-align:center;
-	height:55px;
-	width:55px;
+	/*height:55px;*/
+	/*width:55px;*/
+	line-height: 45px;
+	font-size: 2em;
+	height: 45px;
+	width: 45px;
 }
 
 ul.footer-social li a {
@@ -1802,25 +1806,7 @@ select,
 }
 
 
-@media (min-width: 1200px) {
-  .comments .pull-left {
-    width: 70px;
-    margin-right: 30px;
-  }
-}
 
-@media (max-width: 979px) {
-  .comments .pull-left {
-    width: 42px;
-    margin-right: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .comments .pull-left {
-    width: auto;
-  }
-}
 
 .comment {
   border-bottom: 1px solid #F6F5F2;
@@ -2270,12 +2256,6 @@ ul.reviews-posts .rating {float:left;}
 }
 .wdttop:hover { background-color: #cc3616; }
 
-@media (min-width: 1200px) {
-  .flickr > li {
-    width: auto;
-  }
-}
-
 /* Color Schemes */
 .nav-tabs > .active > a,
 .nav-tabs > .active > a:hover,
@@ -2314,7 +2294,7 @@ ul.reviews-posts .rating {float:left;}
   border-color: #cc3616 !important;
 }
 
-.btn-general {
+.btn-general, .powerup input[type='submit'] {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.07)));
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.07));
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.07));
@@ -2327,7 +2307,7 @@ ul.reviews-posts .rating {float:left;}
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
   *background-color: #cc3616;
 }
-.btn-general:hover, .btn-general:focus, .btn-general:active, .btn-general.active, .btn-general.disabled, .btn-general[disabled] {
+.btn-general:hover, .btn-general:focus, .btn-general:active, .btn-general.active, .btn-general.disabled, .btn-general[disabled], .powerup input[type='submit']:hover {
   background-color: #b72709 !important;
   color: #ffffff !important;
   *background-color: #b72709 !important;
@@ -2372,18 +2352,57 @@ ul.reviews-posts .rating {float:left;}
 .navbar .nav > li .dropdown-submenu:focus > a:after {
   border-left-color: #cc3616 !important;
 }
-/*.fb_reset {display: inline-block;}*/
-/*.fb-share-button {margin: 0px 15px;}*/
 .fb_iframe_widget{
-	top: -4px !important;
-}
-
-.twitter-share-button{
-  float: left;
+	top: -7px !important;
 }
 .fb_reset {display: inline-block !important;}
 .fb-share-button {
-  /*margin-left: 15px !important;*/
   width: 55px !important;
 }
 .list-bank {display:inline-block; width:160px;}
+.recovery-pass { margin-bottom: 12px !important; }.noresult{font-style:italic; text-align:center}
+.text-center{text-align:center}
+.pointer{cursor:pointer;}
+.breadcrumb a{color: #777}.mycart{width: 100%}
+.tr{text-align: right;}.tl{text-align: left;}.sosmed{text-align: right;}
+#banner{margin-left:0px;}.signin-form button{margin-left: 0 !important}
+.remove-item a:hover{color: inherit;}.remove-item:hover{color: initial;}
+.textright{text-align: right;}
+
+@media (min-width: 1200px) {
+  .comments .pull-left {
+    width: 70px;
+    margin-right: 30px;
+  }
+  .flickr > li {
+    width: auto;
+  }
+}
+@media (max-width: 979px) {
+  .comments .pull-left {
+    width: 42px;
+    margin-right: 20px;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 767px){
+	.date{display: inline;}
+	.sosmed{
+		width: 80%;
+		display: inline-block;
+	}
+}
+@media (max-width: 480px) {
+  .comments .pull-left {
+    width: auto;
+  }
+}
+@media only screen and (width: 480px){
+	.date{display: inline}
+	.sosmed {
+	    width: 80%;
+	    display: inline-block;
+	}
+}
+@media screen and (max-width: 360px){
+	.sosmed{text-align: left;	}
+}

@@ -1,41 +1,41 @@
 <div class="row">
 	<div class="span12">
 		@foreach(horizontal_banner() as $item)
-		<div id="banner" class="span12" style="margin-left:0px;">
+		<div id="banner" class="span12">
 			<div>
 				<a href="{{url($item->url)}}">
-					{{HTML::image(banner_image_url($item->gambar),'banner',array('class'=>'box-shadow','style'=>'display:block;width:100%;'))}}
+					{{HTML::image(banner_image_url($item->gambar),'info',array('class'=>'box-shadow','style'=>'display:block;width:100%;'))}}
 				</a>
 			</div>
 		</div>
 		@endforeach
-    </div>
+	</div>
 </div>
 
 <!-- Start Carousels -->
 <div class="row-fluid">
 	<div class="span12">
-        <h2 class="widget-title"><span>Produk</span></h2>
+		<h2 class="widget-title"><span>Produk</span></h2>
 		<div class="sidebar-line"><span></span></div>
 		<div class="for-womans flexslider flex-direction-nav-on-top">
 			<ul class="slides">
 				<li>
 				{{-- */ $counter=0; /* --}}
-				@foreach(list_product() as $key=>$myproduk)
+				@foreach(home_product() as $key=>$myproduk)
 					{{-- */ $counter++; /* --}}
-					@if($counter==7)
+					@if($counter == 7)
 					</li>
 					<li>
-					{{-- */ $counter=1; /* --}}
+					{{-- */ $counter = 1; /* --}}
 					@endif
 					<div class="span2">
 						<div class="wdt-product">
 							<div class="wdt-products-wrapper">
 								<div class="wdt-product active show">
 									<a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">
-										{{HTML::image(product_image_url($myproduk->gambar1), short_description($myproduk->nama,15))}}
+										{{HTML::image(product_image_url($myproduk->gambar1,'medium'), short_description($myproduk->nama,15))}}
 									</a>
-									<h4><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">{{$myproduk->nama}}</a></h4>
+									<h4><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">{{short_description($myproduk->nama,20)}}</a></h4>
 									<div class="wdt-pricing">
 										<span class="amount">
 										@if($setting->checkoutType!=2)
@@ -71,7 +71,7 @@
 		</div>
 	</div>
 </div>
-<!-- End Carousels -->   
+<!-- End Carousels -->
 
 <!-- Start Tab & Deal -->
 <div class="services">
@@ -92,9 +92,9 @@
 								<div class="wdt-products-wrapper">
 									<div class="wdt-product active show">
 										<a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">
-											{{HTML::image(product_image_url($myproduk->gambar1), short_description($myproduk->nama, 15))}}
+											{{HTML::image(product_image_url($myproduk->gambar1,'medium'), short_description($myproduk->nama, 15))}}
 										</a>
-										<h4><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">{{$myproduk->nama}}</a></h4>
+										<h4><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">{{short_description($myproduk->nama,20)}}</a></h4>
 										<div class="wdt-overlay zoom-hover">
 											<span class="amount zoom"><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}"><i class="icon-zoom-in"></i></a></span>
 										</div>
@@ -113,7 +113,7 @@
 								</div>
 							</div>
 						</div>
-						@if($counter>=6)
+						@if($counter >= 6)
 						{{-- */ break; /* --}}
 						@endif
 					@endforeach
@@ -123,21 +123,21 @@
 				<div class="tab-pane fade" id="best-sellers">
 					<div class="row-fluid">
 					{{-- */ $counter = 0; /* --}}
-					@foreach(list_product() as $key=>$myproduk)
-						@if($myproduk->terlaris=='1')
+					@foreach(best_seller() as $key=>$myproduk)
+						@if($myproduk->terlaris == '1')
 						{{-- */ $counter++; /* --}}
 						<div class="span2">
 							<div class="wdt-product">
 								<div class="wdt-products-wrapper">
 									<div class="wdt-product active show">
 										<a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">
-											{{HTML::image(product_image_url($myproduk->gambar1), short_description($myproduk->nama, 15))}}
+											{{HTML::image(product_image_url($myproduk->gambar1,'medium'), short_description($myproduk->nama, 15))}}
 										</a>
 										<h4><a href="{{product_url($myproduk)}}" title="{{$myproduk->nama}}">{{$myproduk->nama}}</a></h4>
 										<div class="wdt-overlay zoom-hover">
 											<span class="amount">
 											@if($setting->checkoutType!=2)
-												{{price($myproduk->hargaJual)}}
+												{{ price($myproduk->hargaJual) }}
 											@else
 												Lihat
 											@endif
@@ -158,18 +158,18 @@
 								</div>
 							</div>
 						</div>
-						@if($counter>=6)
+						@if($counter >= 6)
 						{{-- */ break; /* --}}
 						@endif
 
 						@endif
 					@endforeach
 					</div>
-				</div>				
+				</div>
 			</div>
 		</div>
-	</div>   
-</div> 
+	</div>
+</div>
 <!-- END Tab & Deal --> 
 
 <!-- Start Services -->
@@ -196,7 +196,7 @@
 					@endforeach
 					</li>
 				</ul>
-			</div>           
+			</div>
 		</div>
 
 		<div class="span5">
@@ -204,23 +204,6 @@
 			<div class="sidebar-line"><span></span></div>
 			<div class="row-fluid">
 				<p>Get updates, discounts, and special offers to win free stuff and cash prizes!</p>
-				<div class="span5">
-					<ul class="footer-social">
-						@if(@$kontak->fb)
-						<li><a href="{{url($kontak->fb)}}"><i class="icon-facebook"></i></a></li>
-						@endif
-						@if(@$kontak->tw)
-						<li><a href="{{url($kontak->tw)}}"><i class="icon-twitter"></i></a></li>
-						@endif
-						@if(@$kontak->gp)
-						<li><a href="{{url($kontak->gp)}}"><i class="icon-google-plus"></i></a></li>
-						@endif
-						@if(@$kontak->pt)
-						<li><a href="{{url($kontak->pt)}}"><i class="icon-pinterest"></i></a></li>
-						@endif
-					</ul>
-				</div>
-
 				<div class="span6">
 					<div id="subscibe">
 						<h5><i class="icon-envelope"></i> Subscribe to Mail List</h5>
@@ -231,8 +214,7 @@
 					</div>
 				</div>
 			</div>
-		</div><!-- .span4 -->
-
+		</div><!-- .span5 -->
 	</div><!-- .row -->
-</div>     
+</div>
 <!-- End Services -->

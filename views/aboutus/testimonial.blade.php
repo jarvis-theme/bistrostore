@@ -7,7 +7,7 @@
 		<div class="sidebar-line"><span></span></div>
 		@foreach(list_testimonial() as $value)
 			<h2>{{$value->nama}}</h2>
-			<cite title>{{date("d M Y", strtotime($value->updated_at))}}</cite>
+			<cite title>{{date("d M Y", strtotime($value->created_at))}}</cite>
 			{{$value->isi}}
 		@endforeach
 	</div>

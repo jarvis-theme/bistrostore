@@ -1,19 +1,3 @@
-@if(Session::has('error'))
-<div class="error" id='message' style='display:none'>
-	{{Session::get('error')}}
-</div>
-@endif
-@if(Session::has('success'))
-<div class="success" id='message' style='display:none'>
-	<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>
-</div>
-@endif
-@if(Session::has('errorrecovery'))
-<div class="error" id='message' style='display:none'>
-	<p>Maaf, email anda tidak ditemukan.</p>
-</div>
-@endif	
-	
 <div class="row">
 	<div class="span9 post">
 		<div class="row-fluid">
@@ -27,8 +11,8 @@
 				<h2 class="widget-title"><span>Login Your Account</span></h2>
 				<div class="sidebar-line"><span></span></div>
 				<form class="signin-form" action="{{url('member/login')}}" method="post" enctype="multipart/form-data">
-					<input class="input-block-level" name="email" type="text" placeholder="Enter your email address" id="inputEmail" />
-					<input class="input-block-level" name="password" placeholder="Enter your password" type="password" id="inputPassword" />
+					<input class="input-block-level" name="email" type="text" placeholder="Enter your email address" id="inputEmail" required />
+					<input class="input-block-level" name="password" placeholder="Enter your password" type="password" id="inputPassword" required />
 					<label for="inputPassword">
 						<a href="{{url('member/forget-password')}}">Forgot?</a>
 					</label>

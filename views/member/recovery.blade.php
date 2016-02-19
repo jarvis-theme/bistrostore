@@ -1,30 +1,15 @@
-@if(Session::has('error'))
-<div class="error" id='message' style='display:none'>
-	{{Session::get('error')}}
-</div>
-@endif
-@if(Session::has('success'))
-<div class="success" id='message' style='display:none'>
-	<p>Selamat, anda sudah berhasil register. Silakan check email untuk mengetahui informasi akun anda.</p>
-</div>
-@endif
-@if(Session::has('errorrecovery'))
-<div class="error" id='message' style='display:none'>
-	<p>Maaf, email anda tidak ditemukan.</p>
-</div>
-@endif	
-	
 <div class="row">
 	<div class="span9 post">
 		<div class="row-fluid">
 			<div class="span5">
 				<h2 class="widget-title"><span>Reset Password</span></h2>
 				<div class="sidebar-line"><span></span></div>
-				{{Form::open(array('url' => 'member/forgetpassword', 'class' => 'signin-form'))}}
-					<input class="input-block-level" name="email" type="text" placeholder="Enter your email address" id="inputEmail" />
-					<button class="btn btn-medium btn-general input-block-level" type="submit">Reset Password</button>
+				{{Form::open(array('url' => 'member/recovery/'.$id.'/'.$code, 'class' => 'form-horizontal'))}}
+					<input class="input-block-level recovery-pass" name="password" type="password" placeholder="Enter your new password" />
+					<input class="input-block-level recovery-pass" name="password_confirmation" type="password" placeholder="Confirmation new password" />
+					<button class="btn btn-medium btn-general input-block-level span6" type="submit" style="margin-left: 0px;">Update Password</button>
 				{{Form::close()}}
-				<label for="inputPassword">
+				<label for="inputPassword" class="pull-right">
 					<a href="{{url('member')}}">Login Here</a>
 				</label>
 			</div>

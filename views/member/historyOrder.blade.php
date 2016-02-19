@@ -12,7 +12,7 @@
 			<div class="tab-pane active" id="step1">
 				<div class="row-fluid">
 					<div class="span12">
-						@if($order->count()>0)
+						@if(list_order()->count() > 0)
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -26,19 +26,19 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($order as $item)
+								@foreach (list_order() as $item)
 								<tr>
-									<td>{{prefixOrder()}}{{$item->kodeOrder}}</td>
+									<td>{{prefixOrder().$item->kodeOrder}}</td>
 									<td>{{waktu($item->tanggalOrder)}}</td>
 									<td>
 										<ul>
-										@foreach ($item->detailorder as $detail)
+											@foreach ($item->detailorder as $detail)
 											<li>{{$detail->produk->nama}} {{$detail->opsiSkuId !=0 ? '('.$detail->opsisku->opsi1.($detail->opsisku->opsi2 != '' ? ' / '.$detail->opsisku->opsi2:'').($detail->opsisku->opsi3 !='' ? ' / '.$detail->opsisku->opsi3:'').')':''}} - {{$detail->qty}}</li>
-										@endforeach
+											@endforeach
 										</ul>
 									</td>
-									<td>{{ price($item->total)}}</td>
-									<td>{{ $item->noResi}}</td>
+									<td>{{ price($item->total) }}</td>
+									<td>{{ $item->noResi }}</td>
 									<td>
 										@if($item->status==0)
 										<span class="label label-warning">Pending</span>
