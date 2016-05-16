@@ -2362,12 +2362,26 @@ ul.reviews-posts .rating {float:left;}
 .list-bank {display:inline-block; width:160px;}
 .recovery-pass { margin-bottom: 12px !important; }.noresult{font-style:italic; text-align:center}
 .text-center{text-align:center}
+.textright{text-align: right;}
 .pointer{cursor:pointer;}
 .breadcrumb a{color: #777}.mycart{width: 100%}
 .tr{text-align: right;}.tl{text-align: left;}.sosmed{text-align: right;}
 #banner{margin-left:0px;}.signin-form button{margin-left: 0 !important}
 .remove-item a:hover{color: inherit;}.remove-item:hover{color: initial;}
-.textright{text-align: right;}
+center#paypal button[type="submit"] {
+    background: #019CDE;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+center#paypal button[type="submit"]:hover { opacity: 0.6 }
+form[name="order"] > input[name="SAVE"] {
+	background: #B5062D; border: medium none; padding: 10px; border-radius: 5px; color: #fff;
+}
+form[name="order"] > input[name="SAVE"]:hover {
+	opacity: 0.8;
+}
 
 @media (min-width: 1200px) {
   .comments .pull-left {

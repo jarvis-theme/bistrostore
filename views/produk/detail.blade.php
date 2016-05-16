@@ -141,19 +141,14 @@
 			<section id="TabElements" class="product-info">
 				<ul id="myTab" class="nav nav-tabs">
 					<li class="active"><a href="#information" data-toggle="tab">Product Info</a></li>
-					<li><a href="#reviews" data-toggle="tab">Review</a></li>
 					<li><a href="#comment" data-toggle="tab">Comment</a></li>
 				</ul>
 				<div id="myTabContent" class="tab-content">
 					<div class="tab-pane fade in active" id="information"> {{$produk->deskripsi}} </div>
-					<div class="tab-pane fade" id="reviews">
-						{{ pluginTrustklik() }}
-					</div>
 					<div class="tab-pane fade" id="comment">
 						<div class="row-fluid">
 							<div class="span12" id="tab-comment"> 
-								{{$fbscript}}
-								{{fbcommentbox(product_url($produk), '800px', '5', 'light')}}
+								{{ pluginComment(product_url($produk), @$produk) }}
 							</div>
 						</div>
 					</div>

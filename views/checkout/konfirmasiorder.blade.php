@@ -94,40 +94,60 @@
 					@endif
 					<div class="accordion-group">
 						<div class="accordion-heading">
-							<a class="accordion-toggle">Konfirmasi pembayaran</a>
+							<a class="accordion-toggle" data-toggle="collapse" href="#transferbank">{{trans('content.step5.confirm_btn')}}</a>
 						</div>
-						<div class="accordion-body">
+						<div id="transferbank" class="accordion-body collapse in"">
 							<div class="accordion-inner">
 								@if($order->status==1 || $order->status==0)
 									@if($order->jenisPembayaran==1)
-										<h3><center>Konfirmasi Form</center></h3>
+									<div class="span6 offset3">
+										<h3 class="text-center">{{trans('content.step3.transfer')}}</h3>
 										{{Form::open(array('url'=> 'konfirmasiorder/'.$order->id, 'method'=>'put', 'class'=> 'signin-form'))}}
 											<input class="input-block-level" name="nama" value="{{Input::old('nama')}}" type="text" placeholder="Enter your name" required />
 											<input class="input-block-level" name="noRekPengirim" value="{{Input::old('noRekPengirim')}}" type="text" placeholder="Account number" required/>
-											<select name="bank">
+											<select name="bank" style="width: 100%">
 												<option value="">-- Pilih Bank Tujuan --</option>
-												@foreach ($banktrans as $bank)
+												@foreach (list_banks() as $bank)
 												<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
 												@endforeach
 											</select>
 											<input class="input-block-level" name="jumlah" value="{{$order->total}}" type="text" required />
-											<button class="btn btn-medium btn-general input-block-level" type="submit">Konfirmasi Order</button>
+											<button class="btn btn-medium btn-general input-block-level" type="submit">{{trans('content.step5.confirm_btn')}}</button>
 										{{Form::close()}}
-									@endif
-									@if($order->jenisPembayaran==2)
-										<h2><center>Konfirmasi Pemabayaran Via Paypal</center></h2>
-										<p>Silakan melakukan pembayaran dengan paypal Anda secara online via paypal payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum {{$expired}}. Klik tombol "Bayar Dengan Paypal" di bawah untuk melanjutkan proses pembayaran.</p>
-										{{$paypalbutton}}
-									@elseif($order->jenisPembayaran==6)
-										@if($order->status == 0)
-										<h2><center>Konfirmasi Pembayaran Via Bitcoin</center></h2><br>
-										<p>Silahkan melakukan pembayaran dengan bitcoin Anda secara online via bitcoin payment gateway. Transaksi ini berlaku jika pembayaran dilakukan sebelum <b>{{$expired_bitcoin}}</b>. Klik tombol "Pay with Bitcoin" di bawah untuk melanjutkan proses pembayaran.</p>
-										{{$bitcoinbutton}}
 										<br>
-										@else
-										<h3><center>Konfirmasi Pembayaran Via Bitcoin</center></h3><br>
-										<p><center><b>Batas waktu pembayaran bicoin anda telah habis.</b></center></p>
-										@endif
+									</div>
+									@elseif($order->jenisPembayaran==2)
+									<div class="span8 offset2">
+										<h2 class="text-center">{{trans('content.step5.confirm_btn')}} Paypal</h2><br>
+										<p class="text-center">{{trans('content.step5.paypal')}}</p>
+										<center id="paypal">{{$paypalbutton}}</center>
+										<br>
+									</div>
+									@elseif($order->jenisPembayaran==5 && $order->status == 0)
+									<div class="span8 offset2">
+										<center>
+											<h3><strong>{{trans('content.step5.confirm_btn')}} DOKU MyShortCart</strong></h3><br>
+											<p>{{trans('content.step5.doku')}}</p><br>
+											{{ $doku_button }}
+										</center>
+										<br>
+									</div>
+									@elseif($order->jenisPembayaran==6 && $order->status == 0)
+									<div class="span8 offset2">
+										<h2 class="text-center">{{trans('content.step5.confirm_btn')}} Bitcoin</h2><br>
+										<p class="text-center">{{trans('content.step5.bitcoin')}}</p>
+										<center>{{$bitcoinbutton}}</center>
+										<br>
+									</div>
+									@elseif($order->jenisPembayaran == 8 && $order->status == 0)
+									<div class="span8 offset2">
+										<h2 class="text-center">{{trans('content.step5.confirm_btn')}} Veritrans</h2><br>
+										<p class="text-center">{{trans('content.step5.veritrans')}}</p><br>
+										<center>
+											<button class="btn btn-info" onclick="location.href='{{ $veritrans_payment_url }}'">{{trans('content.step5.veritrans_btn')}}</button>
+										</center>
+										<br>
+									</div>
 									@endif
 								@endif
 							</div>
