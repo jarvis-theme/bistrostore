@@ -208,7 +208,7 @@
 					<div id="subscibe">
 						<h5><i class="icon-envelope"></i> Subscribe to Mail List</h5>
 						<form id="subscribe" target="_blank" method="post" action="{{@$mailing->action}}">
-							<input type="text" placeholder="Email address">
+							<input type="text" placeholder="Email address" nama="email">
 							<button class="btn btn-general" name="subscribe" type="submit" {{ @$mailing->action==''?'disabled="disabled" style="opacity: 0.5; cursor: default;"':'' }}>Subscribe</button>
 						</form>
 					</div>

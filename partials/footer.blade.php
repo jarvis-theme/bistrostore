@@ -57,7 +57,7 @@
 									<img src="{{url('img/bank/doku.jpg')}}" alt="Doku Payment" title="Doku">
 								</div>
 								@endif
-								@if(count(list_veritrans()) > 0 && list_veritrans()->status == 1)
+								@if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
 								<div class="list-bank">
 									<img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
 								</div>
@@ -127,4 +127,4 @@
 	<!-- End Copyright -->
 	<div class="wdttop">Scroll To Top</div>
 </div>
-{{pluginPowerup()}}
+{{pluginPowerup()}} 

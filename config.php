@@ -65,8 +65,6 @@ return array(
         'warnaDef'=>'background:#FFF;backmenu-background:#F5F5F5;menu-background:#E55137;footer-background:#F3F3F3',
         'color'=>false
         ),
-    'layout' => array(
-        'index1'=>'Layout dengan sidebar'
-        ),
+    'layout' => false,
 
 );
