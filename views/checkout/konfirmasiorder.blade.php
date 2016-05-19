@@ -123,11 +123,22 @@
 										<center id="paypal">{{$paypalbutton}}</center>
 										<br>
 									</div>
+									@elseif($order->jenisPembayaran==4) 
+										@if(($checkouttype==1 && $order->status < 2) || ($checkouttype==3 && ($order->status!=6)))
+										<div class="span8 offset2">
+											<center>
+												<h3><b>{{trans('content.step5.confirm_btn')}} iPaymu</b></h3><br>
+												<p>{{trans('content.step5.ipaymu')}}</p>
+												<a class="btn btn-info" href="{{url('ipaymu/'.$order->id)}}" target="_blank">{{trans('content.step5.ipaymu_btn')}}</a>
+											</center>
+											<br>
+										</div>
+										@endif
 									@elseif($order->jenisPembayaran==5 && $order->status == 0)
 									<div class="span8 offset2">
 										<center>
 											<h3><strong>{{trans('content.step5.confirm_btn')}} DOKU MyShortCart</strong></h3><br>
-											<p>{{trans('content.step5.doku')}}</p><br>
+											<p>{{trans('content.step5.doku')}}</p>
 											{{ $doku_button }}
 										</center>
 										<br>
@@ -142,7 +153,7 @@
 									@elseif($order->jenisPembayaran == 8 && $order->status == 0)
 									<div class="span8 offset2">
 										<h2 class="text-center">{{trans('content.step5.confirm_btn')}} Veritrans</h2><br>
-										<p class="text-center">{{trans('content.step5.veritrans')}}</p><br>
+										<p class="text-center">{{trans('content.step5.veritrans')}}</p>
 										<center>
 											<button class="btn btn-info" onclick="location.href='{{ $veritrans_payment_url }}'">{{trans('content.step5.veritrans_btn')}}</button>
 										</center>
