@@ -107,7 +107,7 @@
 											<input class="input-block-level" name="noRekPengirim" value="{{Input::old('noRekPengirim')}}" type="text" placeholder="Account number" required/>
 											<select name="bank" style="width: 100%">
 												<option value="">-- Pilih Bank Tujuan --</option>
-												@foreach (list_banks() as $bank)
+												@foreach ($banktrans as $bank)
 												<option value="{{$bank->id}}">{{$bank->bankdefault->nama}} - {{$bank->noRekening}} - A/n {{$bank->atasNama}}</option>
 												@endforeach
 											</select>
