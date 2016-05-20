@@ -31,9 +31,11 @@
 						<ul class="slides">
 							<li>
 								@foreach(list_banks() as $value)
-								<div class="list-bank">
-									<img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
-								</div>
+									@if($value->status == 1)
+									<div class="list-bank">
+										<img src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
+									</div>
+									@endif
 								@endforeach
 								@foreach(list_payments() as $pay)  
 									@if($pay->nama == 'ipaymu' && $pay->aktif == 1) 
