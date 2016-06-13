@@ -113,6 +113,13 @@
 							@if(@$kontak->tl)
 							<li><a href="{{url($kontak->tl)}}" title="Tumblr" target="_blank"><i class="icon-tumblr"></i></a></li>
 							@endif
+							@if(!empty($kontak->picmix))
+							<li>
+								<a href="{{url($kontak->picmix)}}" title="Picmix" target="_blank">
+									<img src="https://s3-ap-southeast-1.amazonaws.com/cdn2.jarvis-store.com/blogs/event/icon-picmix.png" style="height: 30px; margin-top: -5px;">
+								</a>
+							</li>
+							@endif
 						</ul>
 					</div>
 				</div>

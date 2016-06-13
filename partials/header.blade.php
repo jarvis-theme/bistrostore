@@ -25,6 +25,13 @@
 				<li><a title="Tumblr" data-placement="bottom" data-toggle="tooltip" href="{{url($kontak->tl)}}"><i class="icon-tumblr"></i></a>
 				</li>
 				@endif
+				@if(!empty($kontak->picmix))
+				<li>
+					<a title="Picmix" data-placement="bottom" data-toggle="tooltip" href="{{url($kontak->picmix)}}">
+						<img src="https://s3-ap-southeast-1.amazonaws.com/cdn2.jarvis-store.com/blogs/event/icon-picmix.png" style="height: 25px;margin-top: -5px;">
+					</a>
+				</li>
+				@endif
 			</ul>
 		</div>
 		<div class="right">
@@ -67,6 +74,7 @@
 					<div class="nav-collapse collapse">
 						<ul class="nav pull-left">
 							<li class="active"><a href="{{url('home')}}">Home</a></li>
+                    		@if(count(category_menu()) > 0)
 							@foreach(category_menu() as $key=>$menu) 
 								@if($menu->parent=='0')
 								<li class="dropdown dropdown-hover">
@@ -98,6 +106,7 @@
 								</li>
 								@endif 
 							@endforeach 
+							@endif
 						</ul>
 						<ul class="nav pull-right">
 							<li class="dropdown dropdown-hover"> <a class="dropdown-toggle" href="#" data-toggle="dropdown">User CP <span class="caret"></span></a>
