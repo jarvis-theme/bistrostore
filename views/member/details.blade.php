@@ -163,7 +163,7 @@
 											<div class="control-group">
 												<label class="control-label" for="companytradingregister">Email</label>
 												<div class="controls">
-													<input name="email" type="text" placeholder="Email@email.com" value="{{$user->email}}">
+													<input name="email" type="email" placeholder="Email@email.com" value="{{$user->email}}">
 												</div>
 											</div>
 											<div class="control-group">

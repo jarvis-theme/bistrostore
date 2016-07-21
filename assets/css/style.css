@@ -1889,6 +1889,7 @@ ol.spaced li {
 	border: 4px solid #FFFFFF;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 	display:block;
+	margin-bottom: 20px;
 }
 .productwrap img
 {
@@ -2383,6 +2384,12 @@ form[name="order"] > input[name="SAVE"]:hover {
 	opacity: 0.8;
 	cursor: pointer;
 }
+.textright{text-align: right;}
+ul.thumblist { list-style: none; display: inline; margin: 0 }
+ul.thumblist li { display: inline; }
+ul.thumblist li img { border: 1px solid; max-width: 150px; }
+#top-desc img { height: auto !important; }
+#brand p { margin: 0; }
 
 @media (min-width: 1200px) {
   .comments .pull-left {

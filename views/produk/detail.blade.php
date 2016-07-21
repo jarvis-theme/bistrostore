@@ -8,41 +8,55 @@
 					<span class="productwrap">
 						{{HTML::image(product_image_url($produk->gambar1,'large'), $produk->nama, array('id'=>'demo4'))}}
 					</span>
-					<ul id="demo4carousel" class="elastislide-list"> 
-						@if($produk->gambar1!='')
-						<li>
-							<a href="#">
-								{{HTML::image(product_image_url($produk->gambar1,'thumb'),'thumbnail 1',array('data-largeimg'=>product_image_url($produk->gambar1,'medium')))}}
-							</a>
-						</li>
-						@endif 
+					<ul id="demo4carousel" class="thumblist">
 						@if($produk->gambar2!='')
 						<li>
-							<a href="#">
+							<a href="#zoom1" role="button" data-toggle="modal">
 								{{HTML::image(product_image_url($produk->gambar2,'thumb'),'thumbnail 2',array('data-largeimg'=>product_image_url($produk->gambar2,'medium')))}}
 							</a>
 						</li>
 						@endif 
 						@if($produk->gambar3!='')
 						<li>
-							<a href="#">
+							<a href="#zoom2" role="button" data-toggle="modal">
 								{{HTML::image(product_image_url($produk->gambar3,'thumb'),'thumbnail 3',array('data-largeimg'=>product_image_url($produk->gambar3,'medium')))}}
 							</a>
 						</li>
 						@endif 
 						@if($produk->gambar4!='')
 						<li>
-							<a href="#">
+							<a href="#zoom3" role="button" data-toggle="modal">
 								{{HTML::image(product_image_url($produk->gambar4,'thumb'),'thumbnail 4',array('data-largeimg'=>product_image_url($produk->gambar4,'medium')))}}
 							</a>
 						</li>
 						@endif
 					</ul>
+					@if($produk->gambar2 != "")
+                    <section>
+                        <div id="zoom1" class="modal hide fade" tabindex="-1" role="dialog">
+                            {{ HTML::image(product_image_url($produk->gambar2,'large'),'zoom 1') }}
+                        <div>
+                    </section>
+                    @endif
+                    @if($produk->gambar3 != "")
+                    <section>
+                        <div id="zoom2" class="modal hide fade" tabindex="-1" role="dialog">
+                            {{ HTML::image(product_image_url($produk->gambar3,'large'),'zoom 2') }}
+                        <div>
+                    </section>
+                    @endif
+                    @if($produk->gambar4 != "")
+                    <section>
+                        <div id="zoom4" class="modal hide fade" tabindex="-1" role="dialog">
+                            {{ HTML::image(product_image_url($produk->gambar4,'large'),'zoom 3') }}
+                        <div>
+                    </section>
+                    @endif
 				</div>
 			</div>
 			<div class="span5">
 				<form action="#" id="addorder">
-					<!--<h2 class="post-title">ini kolom nama</h2>-->
+					<h2 class="post-title">{{ $produk->nama }}</h2>
 					@if($setting->checkoutType!=2)
 						<div class="price"> 
 							@if($produk->hargaCoret!=0)

@@ -31,18 +31,18 @@
 					</div>
 					<br>
 					<div style="margin-bottom: -25px;">
-						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required', "class"=>"span5", "name"=>"provinsi", "id"=>"provinsi", "data-rel"=>"chosen", "onchange"=>"searchKabupaten(this.value)"))}}
+						{{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, Input::old("provinsi"),array('required', "class"=>"span5", "name"=>"provinsi", "id"=>"provinsi", "data-rel"=>"chosen", "onchange"=>"searchKabupaten(this.value)"))}}
 					</div>
 					<br>
 					<div>
-						{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"), array('required', "class"=>"span5", "name"=>"kota", "id"=>"kota", "data-rel"=>"chosen"))}}
+						{{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, Input::old("kota"), array('required', "class"=>"span5", "name"=>"kota", "id"=>"kota", "data-rel"=>"chosen"))}}
 					</div>
 
 					<label for="inputEmail"><span class="required">*</span> Choose Password</label>
 					<input class="input-block-level" placeholder="* Enter your password" type="text" id="inputpassword" name="password" required />
 					<input class="input-block-level" placeholder="* Enter your password again" type="text" id="inputpassword" name="password_confirmation" required/>
 					<label class="checkbox inline">
-						<input type="checkbox" id="inlineCheckbox1" value="option1" required > Saya telah membaca dan menyetujui&nbsp;<a href="{{url('service')}}">Persyaratan Member</a>
+						<input type="checkbox" id="inlineCheckbox1" value="1" name="readme" required checked > Saya telah membaca dan menyetujui&nbsp;<a href="{{url('service')}}">Persyaratan Member</a>
 					</label>
 					<button class="btn btn-medium btn-general input-block-level" type="submit">Register your account today!</button>
 				{{Form::close()}}

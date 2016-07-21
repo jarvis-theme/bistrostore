@@ -180,21 +180,18 @@
 			<div class="sidebar-line"><span></span></div>
 			<div class="testimonials flexslider flex-direction-nav-on-top">
 				<ul class="slides">
-					<li>
-					{{-- */ $counter = 0; /* --}}
-					@foreach($testimonial as $testi)
-						{{-- */ $counter++; /* --}}
-						@if($counter==3)
-						</li>
-						<li>
-						{{-- */ $counter = 1; /* --}}
-						@endif
-						<blockquote>
-							<p>{{$testi->isi}}</p>
-							<small>{{$testi->nama}}</small>
-						</blockquote>
-					@endforeach
-					</li>
+				    @if(count(list_testimonial()) > 0)
+    				    @foreach(list_testimonial(3) as $testi)
+    					<li>
+    						<blockquote>
+    							<p>{{$testi->isi}}</p>
+    							<small>{{$testi->nama}}</small>
+    						</blockquote>
+    					</li>
+    					@endforeach
+					@else
+					    <li><i>Belum ada testimonial</i></li>
+					@endif
 				</ul>
 			</div>
 		</div>
@@ -208,7 +205,7 @@
 					<div id="subscibe">
 						<h5><i class="icon-envelope"></i> Subscribe to Mail List</h5>
 						<form id="subscribe" target="_blank" method="post" action="{{@$mailing->action}}">
-							<input type="text" placeholder="Email address" nama="email">
+							<input type="text" placeholder="Email address" name="email">
 							<button class="btn btn-general" name="subscribe" type="submit" {{ @$mailing->action==''?'disabled="disabled" style="opacity: 0.5; cursor: default;"':'' }}>Subscribe</button>
 						</form>
 					</div>

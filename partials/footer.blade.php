@@ -61,7 +61,7 @@
 								@endif
 								@if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
 								<div class="list-bank">
-									<img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
+									<img src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans" style="background: #fff">
 								</div>
 								@endif
 							</li>
@@ -88,11 +88,13 @@
 					</ul>
 				</div>
 				<div class="span3">
-					<h2 class="widget-title"><span>Live Chat</span></h2>
+					<h2 class="widget-title"><span>{{ $kontak->ym ? "Live Chat" : "Follow Us" }}</span></h2>
 					<div class="sidebar-line"><span></span></div>
+					@if($kontak->ym)
 					<div class="livechat">
-						{{$kontak->ym ? ymyahoo($kontak->ym) : ''}}
+						{{ ymyahoo($kontak->ym) }}
 					</div>
+					@endif
 					<div>
 						<ul class="footer-social">
 							@if(@$kontak->fb)
