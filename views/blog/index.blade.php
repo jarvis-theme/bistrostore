@@ -9,6 +9,9 @@
 			@foreach(list_blog(null, @$blog_category) as $value)
 			<a href="{{blog_url($value)}}"><h2>{{$value->judul}}</h2></a>
 			<cite><strong>{{date("d M Y", strtotime($value->created_at))}}</strong></cite><br>
+            <div>
+            	<img src="{{ imgString($value->isi) }}" class="blog-img" />
+        	</div>
 			{{short_description($value->isi,350)}}
 			<p><a href="{{blog_url($value)}}"}}>Baca Selengkapnya →</a></p>
 			@endforeach	

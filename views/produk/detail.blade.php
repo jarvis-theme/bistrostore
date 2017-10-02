@@ -71,7 +71,7 @@
 								<span class="required">*</span>
 								<b>Jumlah:</b>
 								<br>
-								<input class="span9" type="text" name="qty" size="2" value="1"> 
+								<input class="span9" type="text" name="qty" size="2" value="1" pattern="[0-9]"> 
 							</div>
 							@if($opsiproduk->count() > 0)
 							<div class="span6">
@@ -121,7 +121,7 @@
 							<div class="row-fluid">
 								<div class="span6"> <span class="required">*</span> <b>Jumlah:</b>
 									<br>
-									<input class="span9" type="text" name="qty" size="2" value="1"> 
+									<input class="span9" type="text" name="qty" size="2" value="1" pattern="[0-9]"> 
 								</div>
 								@if($opsiproduk->count() > 0)
 								<div class="span6">
